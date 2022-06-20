@@ -25,8 +25,7 @@ type Props = {
     avatarSize?: number,
     showAvatarText?: boolean,
     avatarTextStyle?: TextStyle,
-    modalOpen?: boolean,
-]};
+    modalOpen?: boolean};
 
 export const Story = (props: Props) => {
     const {
