@@ -43,7 +43,7 @@ export const Story = (props: Props) => {
     } = props;
 
     const [dataState, setDataState] = useState(data);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(true);
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedData, setSelectedData] = useState([]);
     const cube = useRef();
@@ -156,7 +156,7 @@ export const Story = (props: Props) => {
 
     return (
         <Fragment>
-            <View style={style}>
+            {/* <View style={style}>
                 <StoryCircleListView
                     handleStoryItemPress={_handleStoryItemPress}
                     data={dataState}
@@ -166,7 +166,7 @@ export const Story = (props: Props) => {
                     showText={showAvatarText}
                     textStyle={avatarTextStyle}
                 />
-            </View>
+            </View> */}
             <Modal
                 style={{
                     flex: 1,
