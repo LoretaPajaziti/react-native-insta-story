@@ -29,7 +29,9 @@ import {TextStyle} from "react-native";
     
 // };
 
-export const Story = ({style,
+export const Story = ({
+    data,
+    style,
     unPressedBorderColor,
     pressedBorderColor,
     onClose,
