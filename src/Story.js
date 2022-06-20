@@ -24,7 +24,7 @@ type Props = {
     showAvatarText?: boolean,
     avatarTextStyle?: TextStyle,
     isModalOpen?: boolean
-    setIsModalOpen?: any
+    setIsModalOpen?: function
 };
 
 export const Story = (props: Props) => {
