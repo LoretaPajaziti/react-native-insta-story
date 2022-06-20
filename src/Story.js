@@ -8,6 +8,8 @@ import type {IUserStory} from "./interfaces/IUserStory";
 import AndroidCubeEffect from "./components/AndroidCubeEffect";
 import CubeNavigationHorizontal from "./components/CubeNavigationHorizontal";
 import {TextStyle} from "react-native";
+import type {IUserStoryItem} from "./interfaces/IUserStory";
+
 
 type Props = {
     data: IUserStory[],
@@ -23,8 +25,8 @@ type Props = {
     avatarSize?: number,
     showAvatarText?: boolean,
     avatarTextStyle?: TextStyle,
-    modalOpen?: boolean
-};
+    modalOpen?: boolean,
+]};
 
 export const Story = (props: Props) => {
     const {
@@ -41,8 +43,10 @@ export const Story = (props: Props) => {
         avatarSize,
         showAvatarText,
         avatarTextStyle,
-        modalOpen
+        modalOpen, 
     } = props;
+
+    
 
     const [dataState, setDataState] = useState(data);
     const [isModalOpen, setIsModalOpen] = useState(modalOpen);
@@ -65,6 +69,10 @@ export const Story = (props: Props) => {
     useEffect(() => {
         handleSeen();
     }, [currentPage]);
+
+    useEffect(() => {
+        _handleStoryItemPress();
+    }, [])
 
     const handleSeen = () => {
         const seen = selectedData[currentPage];
@@ -157,7 +165,7 @@ export const Story = (props: Props) => {
     }
 
     return (
-        <Fragment>
+        <View >
             {/* <View style={style}>
                 <StoryCircleListView
                     handleStoryItemPress={_handleStoryItemPress}
@@ -173,7 +181,8 @@ export const Story = (props: Props) => {
                 style={{
                     flex: 1,
                     height: Dimensions.get("window").height,
-                    width: Dimensions.get("window").width
+                    width: Dimensions.get("window").width,
+                    backgroundColor: 'red'
                 }}
                 isOpen={isModalOpen}
                 onClosed={() => setIsModalOpen(false)}
@@ -185,7 +194,7 @@ export const Story = (props: Props) => {
             >
                 {renderCube()}
             </Modal>
-        </Fragment>
+        </View>
     );
 };
 export default Story;
