@@ -23,8 +23,7 @@ type Props = {
     avatarSize?: number,
     showAvatarText?: boolean,
     avatarTextStyle?: TextStyle,
-    isModalOpen?: boolean
-    setIsModalOpen?: function
+    modalOpen?: boolean
 };
 
 export const Story = (props: Props) => {
@@ -42,12 +41,11 @@ export const Story = (props: Props) => {
         avatarSize,
         showAvatarText,
         avatarTextStyle,
-        isModalOpen,
-        setIsModalOpen
+        modalOpen
     } = props;
 
     const [dataState, setDataState] = useState(data);
-    // const [isModalOpen, setIsModalOpen] = useState();
+    const [isModalOpen, setIsModalOpen] = useState(modalOpen);
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedData, setSelectedData] = useState([]);
     const cube = useRef();
