@@ -8,47 +8,64 @@ import type {IUserStory} from "./interfaces/IUserStory";
 import AndroidCubeEffect from "./components/AndroidCubeEffect";
 import CubeNavigationHorizontal from "./components/CubeNavigationHorizontal";
 import {TextStyle} from "react-native";
-import type {IUserStoryItem} from "./interfaces/IUserStory";
 
 
-type Props = {
-    data: IUserStory[],
-    style?: any,
-    unPressedBorderColor?: string,
-    pressedBorderColor?: string,
-    onClose?: function,
-    onStart?: function,
-    duration?: number,
-    swipeText?: string,
-    customSwipeUpComponent?: any,
-    customCloseComponent?: any,
-    avatarSize?: number,
-    showAvatarText?: boolean,
-    avatarTextStyle?: TextStyle,
-    modalOpen?: boolean};
+// type Props = {
+//     data: IUserStory[],
+//     style?: any,
+//     unPressedBorderColor?: string,
+//     pressedBorderColor?: string,
+//     onClose?: function,
+//     onStart?: function,
+//     duration?: number,
+//     swipeText
+//     customSwipeUpComponent
+//     customCloseComponent    
+//     avatarSize
+//     showAvatarText
+//     avatarTextStyle
+//     modalOpen 
+//     setModalOpen
+    
+// };
 
-export const Story = (props: Props) => {
-    const {
-        data,
-        unPressedBorderColor,
-        pressedBorderColor,
-        style,
-        onStart,
-        onClose,
-        duration,
-        swipeText,
-        customSwipeUpComponent,
-        customCloseComponent,
-        avatarSize,
-        showAvatarText,
-        avatarTextStyle,
-        modalOpen, 
-    } = props;
+export const Story = ({style,
+    unPressedBorderColor,
+    pressedBorderColor,
+    onClose,
+    onStart,
+    duration,
+    swipeText,
+    customSwipeUpComponent,
+    customCloseComponent, 
+    avatarSize,
+    showAvatarText,
+    avatarTextStyle,
+    isModalOpen, 
+    setIsModalOpen,
+
+}) => {
+    // const {
+    //     data,
+    //     unPressedBorderColor,
+    //     pressedBorderColor,
+    //     style,
+    //     onStart,
+    //     onClose,
+    //     duration,
+    //     swipeText,
+    //     customSwipeUpComponent,
+    //     customCloseComponent,
+    //     avatarSize,
+    //     showAvatarText,
+    //     avatarTextStyle,
+    //     modalOpen, 
+    // } = props;
 
     
 
     const [dataState, setDataState] = useState(data);
-    const [isModalOpen, setIsModalOpen] = useState(modalOpen);
+    // const [isModalOpen, setIsModalOpen] = useState(modalOpen);
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedData, setSelectedData] = useState([]);
     const cube = useRef();
@@ -118,8 +135,8 @@ export const Story = (props: Props) => {
     const renderStoryList = () => selectedData.map((x, i) => {
         return (<StoryListItem duration={duration * 1000}
                                key={i}
-                               profileName={x.user_name}
-                               profileImage={x.user_image}
+                            //    profileName={x.user_name}
+                            //    profileImage={x.user_image}
                                stories={x.stories}
                                currentPage={currentPage}
                                onFinish={onStoryFinish}
