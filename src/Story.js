@@ -155,31 +155,32 @@ export const Story = ({
     })
 
     const renderCube = () => {
-        if (Platform.OS == 'ios') {
-            return (
-                <CubeNavigationHorizontal
-                    ref={cube}
-                    callBackAfterSwipe={(x) => {
-                        if (x != currentPage) {
-                            setCurrentPage(parseInt(x));
-                        }
-                    }}
-                >
-                    {renderStoryList()}
-                </CubeNavigationHorizontal>
-            )
-        } else {
-            return (<AndroidCubeEffect
-                ref={cube}
-                callBackAfterSwipe={(x) => {
-                    if (x != currentPage) {
-                        setCurrentPage(parseInt(x));
-                    }
-                }}
-            >
-                {renderStoryList()}
-            </AndroidCubeEffect>)
-        }
+        // if (Platform.OS == 'ios') {
+        //     return (
+        //         <CubeNavigationHorizontal
+        //             ref={cube}
+        //             callBackAfterSwipe={(x) => {
+        //                 if (x != currentPage) {
+        //                     setCurrentPage(parseInt(x));
+        //                 }
+        //             }}
+        //         >
+        //             {renderStoryList()}
+        //         </CubeNavigationHorizontal>
+        //     )
+        // } else {
+        //     return (<AndroidCubeEffect
+        //         ref={cube}
+        //         callBackAfterSwipe={(x) => {
+        //             if (x != currentPage) {
+        //                 setCurrentPage(parseInt(x));
+        //             }
+        //         }}
+        //     >
+        //         {renderStoryList()}
+        //     </AndroidCubeEffect>)
+        // }
+        
     }
 
     return (
@@ -210,7 +211,7 @@ export const Story = ({
                 backButtonClose
                 coverScreen={true}
             >
-                {renderCube()}
+                {renderStoryList()}
             </Modal>
         </View>
     );
