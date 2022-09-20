@@ -1,13 +1,13 @@
-import React, {Fragment, useRef, useState, useEffect} from "react";
-import {Dimensions, View, Platform} from "react-native";
+import React, { Fragment, useRef, useState, useEffect } from "react";
+import { Dimensions, View, Platform } from "react-native";
 import Modal from "react-native-modalbox";
 import StoryListItem from "./StoryListItem";
 import StoryCircleListView from "./StoryCircleListView";
-import {isNullOrWhitespace} from "./helpers/ValidationHelpers";
-import type {IUserStory} from "./interfaces/IUserStory";
+import { isNullOrWhitespace } from "./helpers/ValidationHelpers";
+import type { IUserStory } from "./interfaces/IUserStory";
 import AndroidCubeEffect from "./components/AndroidCubeEffect";
 import CubeNavigationHorizontal from "./components/CubeNavigationHorizontal";
-import {TextStyle} from "react-native";
+import { TextStyle } from "react-native";
 
 
 // type Props = {
@@ -26,7 +26,7 @@ import {TextStyle} from "react-native";
 //     avatarTextStyle
 //     modalOpen 
 //     setModalOpen
-    
+
 // };
 
 export const Story = ({
@@ -39,11 +39,11 @@ export const Story = ({
     duration,
     swipeText,
     customSwipeUpComponent,
-    customCloseComponent, 
+    customCloseComponent,
     avatarSize,
     showAvatarText,
     avatarTextStyle,
-    isModalOpen, 
+    isModalOpen,
     setIsModalOpen,
 
 }) => {
@@ -64,7 +64,7 @@ export const Story = ({
     //     modalOpen, 
     // } = props;
 
-    
+
 
     const [dataState, setDataState] = useState(data);
     // const [isModalOpen, setIsModalOpen] = useState(modalOpen);
@@ -83,6 +83,10 @@ export const Story = ({
         setSelectedData(newData);
         // setIsModalOpen(true);
     };
+
+    useEffect(() => {
+        setSelectedData(data)
+    }, [data]);
 
     useEffect(() => {
         handleSeen();
@@ -136,22 +140,22 @@ export const Story = ({
 
     const renderStoryList = () => selectedData.map((x, i) => {
         return (<StoryListItem duration={duration * 1000}
-                               key={i}
-                            //    profileName={x.user_name}
-                            //    profileImage={x.user_image}
-                               stories={x.stories}
-                               currentPage={currentPage}
-                               onFinish={onStoryFinish}
-                               swipeText={swipeText}
-                               customSwipeUpComponent={customSwipeUpComponent}
-                               customCloseComponent={customCloseComponent}
-                               onClosePress={() => {
-                                   setIsModalOpen(false);
-                                   if (onClose) {
-                                       onClose(x);
-                                   }
-                               }}
-                               index={i}/>)
+            key={i}
+            //    profileName={x.user_name}
+            //    profileImage={x.user_image}
+            stories={x.stories}
+            currentPage={currentPage}
+            onFinish={onStoryFinish}
+            swipeText={swipeText}
+            customSwipeUpComponent={customSwipeUpComponent}
+            customCloseComponent={customCloseComponent}
+            onClosePress={() => {
+                setIsModalOpen(false);
+                if (onClose) {
+                    onClose(x);
+                }
+            }}
+            index={i} />)
     })
 
     const renderCube = () => {
@@ -180,7 +184,7 @@ export const Story = ({
         //         {renderStoryList()}
         //     </AndroidCubeEffect>)
         // }
-        
+
     }
 
     return (
@@ -201,7 +205,7 @@ export const Story = ({
                     flex: 1,
                     height: Dimensions.get("window").height,
                     width: Dimensions.get("window").width,
-                    backgroundColor: 'red'
+                    backgroundColor: 'black'
                 }}
                 isOpen={isModalOpen}
                 onClosed={() => setIsModalOpen(false)}
